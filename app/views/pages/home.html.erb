@@ -1,2 +1,3 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to TOCA!</h1>
+<p>You are successfully logged in as <%= current_user.email %></p>
+<%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %>
