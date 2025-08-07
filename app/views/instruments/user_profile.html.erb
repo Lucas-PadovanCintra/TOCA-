@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h1>Perfil do Usuário</h1>
+  <p>Bem-vindo, <%= current_user.nickname %>!</p>
+
+  <h2>Meus Instrumentos</h2>
+  <%= link_to 'Cadastrar Novo Instrumento', new_user_instrument_path(current_user), class: 'btn btn-primary mb-3' %>
+
+  <% if @instruments.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Marca</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @instruments.each do |instrument| %>
+          <tr>
+            <td><%= instrument.name %></td>
+            <td><%= instrument.category %></td>
+            <td><%= instrument.brand %></td>
+            <td>R$ <%= number_to_currency(instrument.price, unit: '', separator: ',', delimiter: '.') %></td>
+            <td>
+              <%= link_to 'Editar', edit_user_instrument_path(current_user, instrument), class: 'btn btn-sm btn-warning' %>
+              <%= link_to 'Excluir', user_instrument_path(current_user, instrument), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este instrumento?' }, class: 'btn btn-sm btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Você ainda não cadastrou nenhum instrumento.</p>
+  <% end %>
+
+  <%= link_to 'Voltar para Home', root_path, class: 'btn btn-secondary' %>
+</div>
