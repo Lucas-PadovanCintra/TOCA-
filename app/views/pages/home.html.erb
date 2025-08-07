@@ -10,3 +10,6 @@
     <%= link_to 'Cadastrar', new_user_registration_path, class: 'btn btn-secondary' %>
   <% end %>
 </div>
+<h1>Welcome to TOCA!</h1>
+<p>You are successfully logged in as <%= current_user.email %></p>
+<%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-outline-danger" %>
