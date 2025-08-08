@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <h1>Bem-vindo ao TOCAÍ</h1>
+  <p>Encontre ou cadastre instrumentos musicais para venda!</p>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Meu Perfil', user_profile_path(current_user), class: 'btn btn-primary' %>
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+  <% else %>
+    <%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary' %>
+    <%= link_to 'Cadastrar', new_user_registration_path, class: 'btn btn-secondary' %>
+  <% end %>
+</div>
+
