@@ -3,7 +3,7 @@
   <p>Encontre ou cadastre instrumentos musicais!</p>
 
   <% if user_signed_in? %>
-    <%= link_to 'Meu Perfil', user_profile_path(current_user), class: 'btn btn-primary' %>
+    <%= link_to 'Meu Perfil', user_profile_path(User.first), class: 'btn btn-primary' %>
     <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
   <% else %>
     <%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary' %>
