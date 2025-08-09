@@ -1,21 +1,17 @@
 class InstrumentsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show] (preciso do devise)
-  before_action :set_user, except: [:index, :show]
-  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action :set_user
+  before_action :set_instrument, only: [:edit, :update, :destroy]
+
+  def user_profile
+    @instruments = @user.instruments
+  end
 
   def index
     @instruments = Instrument.all.includes(:user)
     @instruments = @instruments.search(params[:search]) if params[:search].present?
     @instruments = @instruments.by_category(params[:category]) if params[:category].present?
     @instruments = @instruments.by_brand(params[:brand]) if params[:brand].present?
-  end
-
-  def show
-    # @instrument is set by before_action
-  end
-
-  def user_profile
-    @instruments = @user.instruments
   end
 
   def new
@@ -50,18 +46,14 @@ class InstrumentsController < ApplicationController
   private
 
   def set_user
-    @user = User.first 
+    @user = current_user
   end
 
   def set_instrument
-    if action_name == 'show'
-      @instrument = Instrument.find(params[:id])
-    else
-      @instrument = @user.instruments.find(params[:id])
-    end
+    @instrument = @user.instruments.find(params[:id])
   end
 
   def instrument_params
-    params.require(:instrument).permit(:name, :category, :brand, :price, :description)
+    params.require(:instrument).permit(:name, :category, :brand, :price)
   end
 end
