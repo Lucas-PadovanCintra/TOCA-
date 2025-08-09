@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  # before_action :authenticate_user!, except: [:index] (preciso do devise)
+  before_action :authenticate_user!, except: [:index]
   before_action :set_user
   before_action :set_instrument, only: [:edit, :update, :destroy]
 
@@ -42,12 +42,8 @@ class InstrumentsController < ApplicationController
 
   private
 
-  # def set_user
-  #   @user = current_user (preciso do devise)
-  # end
-
   def set_user
-    @user = User.first # Usuário temporário para testes
+    @user = current_user
   end
 
   def set_instrument
