@@ -5,11 +5,15 @@
                  required: true %>
 
   <%= form.input :category,
+                 collection: Instrument::CATEGORIES,
+                 prompt: 'Selecione uma categoria',
                  label: 'Categoria',
                  input_html: { class: 'form-control' },
                  required: true %>
 
   <%= form.input :brand,
+                 collection: Instrument::BRANDS,
+                 prompt: 'Selecione uma marca',
                  label: 'Marca',
                  input_html: { class: 'form-control' },
                  required: true %>
