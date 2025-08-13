@@ -41,10 +41,11 @@ class Instrument < ApplicationRecord
   ].freeze
 
   belongs_to :user
-  validates :name, :category, :brand, :price, presence: true
+  validates :name, :category, :brand, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   validates :brand, inclusion: { in: BRANDS }
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  # validates :price, numericality: { greater_than_or_equal_to: 0 }
+  monetize :price_cents
 
   scope :by_category, ->(category) {
     where(category: category) if category.present?

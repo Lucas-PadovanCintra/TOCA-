@@ -75,11 +75,7 @@
               <p class="card-text mb-3">
                 <strong class="text-success fs-4">
                   <i class="fas fa-tag"></i>
-                  <% if instrument.respond_to?(:formatted_price) %>
-                    <%= instrument.formatted_price %>
-                  <% else %>
-                    R$ <%= number_with_precision(instrument.price, precision: 2, separator: ',', delimiter: '.') %>
-                  <% end %>
+                  <p><%= humanized_money_with_symbol(instrument.price) %></p>
                 </strong>
               </p>
 
