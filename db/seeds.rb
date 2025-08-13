@@ -14,13 +14,13 @@ user2 = User.create!(
 )
 
 user3 = User.create!(
-  email: "musico3@example.com",
+  email: "carlasm@example.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 user4 = User.create!(
-  email: "musico4@example.com",
+  email: "robertagv@example.com",
   password: "123456",
   password_confirmation: "123456"
 )
