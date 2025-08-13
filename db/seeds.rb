@@ -2,13 +2,25 @@
 puts "Creating users..."
 
 user1 = User.create!(
-  email: "musico1@example.com",
+  email: "thiagodvl@example.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 user2 = User.create!(
-  email: "musico2@example.com", 
+  email: "paulofb@example.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+user3 = User.create!(
+  email: "musico3@example.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+user4 = User.create!(
+  email: "musico4@example.com",
   password: "123456",
   password_confirmation: "123456"
 )
@@ -30,7 +42,7 @@ Instrument.create!([
   },
   {
     name: "Guitarra Fender Stratocaster",
-    category: "Cordas", 
+    category: "Cordas",
     brand: "Fender",
     price: 2500.00,
     description: "Guitarra elétrica americana, modelo clássico dos anos 90. Possui 3 captadores single-coil, alavanca tremolo original e braço em maple. Som vintage incrível, ideal para rock, blues e pop. Acompanha case rígido e cabo.",
@@ -39,9 +51,25 @@ Instrument.create!([
   {
     name: "Piano Digital Casio CDP-S350",
     category: "Teclado",
-    brand: "Casio", 
+    brand: "Casio",
     price: 1800.00,
     description: "Piano digital com 88 teclas pesadas, simulando perfeitamente o toque de um piano acústico. Possui 700 timbres, 200 ritmos e conectividade MIDI/USB. Ideal para estudos e performances. Inclui pedal sustain e partitura de apoio.",
+    user: user1
+  },
+  {
+    name: "Teclado Yamaha PSR-E373",
+    category: "Teclado",
+    brand: "Yamaha",
+    price: 1400.00,
+    description: "Teclado portátil com 61 teclas sensíveis ao toque, mais de 600 vozes, funções de aprendizado e conectividade MIDI. Perfeito para iniciantes.",
+    user: user1
+  },
+  {
+    name: "Bateria Eletrônica Alesis Nitro Mesh",
+    category: "Percussão",
+    brand: "Alesis",
+    price: 2500.00,
+    description: "Bateria eletrônica com pads de malha, módulo com 40 kits e 385 sons. Ideal para estudo silencioso e gravações.",
     user: user1
   }
 ])
@@ -67,7 +95,7 @@ Instrument.create!([
   {
     name: "Baixo Fender Jazz Bass",
     category: "Cordas",
-    brand: "Fender", 
+    brand: "Fender",
     price: 2200.00,
     description: "Baixo elétrico 4 cordas com corpo em alder e braço em maple. Captadores Jazz Bass originais proporcionam versatilidade tonal única. Ótimo para jazz, rock, funk e pop. Em excelente estado, com regulagem profissional recente.",
     user: user2
@@ -83,10 +111,98 @@ Instrument.create!([
   {
     name: "Violino Eagle VE441",
     category: "Cordas",
-    brand: "Eagle", 
+    brand: "Eagle",
     price: 800.00,
     description: "Violino 4/4 intermediário com tampo em abeto e fundo/laterais em maple flamejado. Afinadores metálicos, cavalete em ebano e cordas D'Addario Prelude. Inclui estojo, arco de crina natural e breu. Ótimo custo-benefício.",
     user: user2
+  }
+])
+
+# Instrumentos do usuário 3
+Instrument.create!([
+  {
+    name: "Violão Takamine GD11M",
+    category: "Cordas",
+    brand: "Takamine",
+    price: 1500.00,
+    description: "Violão folk com tampo em mogno, projeção de som equilibrada e excelente tocabilidade.",
+    user: user3
+  },
+  {
+    name: "Bateria Mapex Tornado",
+    category: "Percussão",
+    brand: "Mapex",
+    price: 2500.00,
+    description: "Kit de bateria com acabamento fosco, ideal para iniciantes e ensaios caseiros.",
+    user: user3
+  },
+  {
+    name: "Clarinete Yamaha YCL-255",
+    category: "Sopro",
+    brand: "Yamaha",
+    price: 2300.00,
+    description: "Clarinete em Bb com corpo de resina ABS e chaves niqueladas, som encorpado e fácil manutenção.",
+    user: user3
+  },
+  {
+    name: "Teclado Yamaha PSR-E373",
+    category: "Teclado",
+    brand: "Yamaha",
+    price: 1800.00,
+    description: "Teclado portátil com 61 teclas sensíveis ao toque, mais de 600 vozes e funções educativas.",
+    user: user3
+  },
+  {
+    name: "Baixo Ibanez SR300E",
+    category: "Cordas",
+    brand: "Ibanez",
+    price: 2200.00,
+    description: "Baixo elétrico ativo com captadores PowerSpan, design ergonômico e versatilidade tonal.",
+    user: user3
+  }
+])
+
+# Instrumentos do usuário 4
+Instrument.create!([
+  {
+    name: "Guitarra Gibson Les Paul Standard",
+    category: "Cordas",
+    brand: "Gibson",
+    price: 12500.00,
+    description: "Guitarra lendária com corpo em mogno e tampo em maple, som encorpado e sustain prolongado. Ideal para rock e blues.",
+    user: user4
+  },
+  {
+    name: "Bateria Tama Imperialstar",
+    category: "Percussão",
+    brand: "Tama",
+    price: 3500.00,
+    description: "Kit completo com pratos Meinl, acabamento brilhante e excelente projeção sonora para shows.",
+    user: user4
+  },
+  {
+    name: "Flauta Transversal Pearl Quantz 505",
+    category: "Sopro",
+    brand: "Pearl",
+    price: 2800.00,
+    description: "Flauta de nível intermediário com mecanismo offset G e som aveludado, ideal para orquestras e bandas.",
+    user: user4
+  },
+  {
+    name: "Teclado Korg EK-50",
+    category: "Teclado",
+    brand: "Korg",
+    price: 2100.00,
+    description: "Arranjador portátil com centenas de estilos musicais, ideal para composições e performances ao vivo.",
+    user: user4
+  },
+  {
+    name: "Violoncelo Stradivari Student",
+    category: "Cordas",
+    brand: "Stradivari",
+    price: 4000.00,
+    description: "Violoncelo 4/4 para estudantes avançados, madeira maciça e acabamento artesanal.",
+    user: user4
   }
 ])
 
