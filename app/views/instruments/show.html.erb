@@ -92,10 +92,10 @@
                   <% end %>
                 <% end %>
 
-                <!-- Contact Button (placeholder for future feature) -->
-                <button class="btn btn-outline-success" disabled>
-                  <i class="fas fa-phone"></i> Entrar em Contato
-                </button>
+                <%= form_with url: orders_path do %>
+                  <%= hidden_field_tag 'instrument_id', @instrument.id %>
+                  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+                <% end %>
               </div>
             </div>
           </div>

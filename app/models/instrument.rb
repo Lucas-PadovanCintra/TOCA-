@@ -70,4 +70,8 @@ class Instrument < ApplicationRecord
        .by_brand(params[:search_brand])
 
   end
+
+  def formatted_price
+    "R$ #{price.to_f.round(2).to_s.gsub('.', ',')}"
+  end
 end
