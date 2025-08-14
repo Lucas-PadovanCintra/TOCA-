@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 
   resources :instruments, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :orders, only: [:create, :index, :show]
 
 
 
