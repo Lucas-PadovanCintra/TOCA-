@@ -1,7 +1,7 @@
 class InstrumentsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_user
-  before_action :set_instrument, only: [:edit, :update, :destroy]
+  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
   before_action :search_params, only: [:index]
 
   def user_profile
@@ -10,12 +10,10 @@ class InstrumentsController < ApplicationController
 
   def index
     @instruments = Instrument.all.includes(:user)
-    #separar cada item do @instruments
-    # achar o nome de cada intruments
-    #com o item em mãos eu consigo comparar com a search
-    #eu quero receber um array dos que foram filtrados
-    #@instruments =
     @instruments = Instrument.search(search_params)
+  end
+
+  def show
   end
 
   def new
@@ -54,7 +52,11 @@ class InstrumentsController < ApplicationController
   end
 
   def set_instrument
-    @instrument = @user.instruments.find(params[:id])
+    if action_name == 'show'
+      @instrument = Instrument.find(params[:id])
+    else
+      @instrument = @user.instruments.find(params[:id])
+    end
   end
 
   def instrument_params
