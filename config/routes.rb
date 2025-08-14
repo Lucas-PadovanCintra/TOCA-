@@ -14,4 +14,8 @@ Rails.application.routes.draw do
     get 'profile', to: 'instruments#user_profile', as: :profile
     resources :instruments, except: [:index, :show]
   end
+
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
 end
