@@ -71,7 +71,7 @@ class Instrument < ApplicationRecord
 
   end
 
-  def formatted_price
-    "R$ #{price.to_f.round(2).to_s.gsub('.', ',')}"
-  end
+  # def formatted_price
+  #   "R$ #{price.to_f.round(2).to_s.gsub('.', ',')}"
+  # end
 end
