@@ -1,85 +1,44 @@
-<h1>Instrumentos Musicais</h1>
+<div class="home-index">
+  <h1>Instrumentos Musicais</h1>
 
-<!-- Barra de busca -->
-<%= form_with url: root_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.label :q, "Buscar instrumento:" %>
-    <%= form.text_field :q, value: params[:q], placeholder: "Ex: Violão, Guitarra..." %>
-    <%= form.submit "Buscar" %>
-  </div>
-<% end %>
+  <!-- Barra de busca -->
+  <%= form_with url: root_path, method: :get, local: true, class: "search-form" do |form| %>
+    <div>
+      <%= form.label :q, "Buscar instrumento:" %>
+      <%= form.text_field :q, value: params[:q], placeholder: "Ex: Violão, Guitarra..." %>
+      <%= form.submit "Buscar" %>
+    </div>
+  <% end %>
 
 <hr>
 
-<style>
-  .card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
 
-  .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  <hr>
 
-  .card img {
-    width: 120px;      /* tamanho pequeno */
-    height: 90px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 10px;
-  }
+  <div class="cards-container">
+    <div class="card-grid">
+      <% @instruments.each do |instrument| %>
+        <div class="instrument-card">
+          <% if instrument.image_url.present? %>
+            <img src="<%= instrument.image_url %>" alt="<%= instrument.name %>">
+          <% else %>
+            <div class="no-image-placeholder">
+              <span>Sem imagem</span>
+            </div>
+          <% end %>
 
-  .card h2 {
-    margin: 0;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .card .brand {
-    font-weight: bold;
-    color: #666;
-    margin-top: 5px;
-  }
-
-  .card p {
-    text-align: center;
-    margin: 5px 0;
-  }
-
-  .card .price {
-    color: green;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-</style>
-
-<div class="card-grid">
-  <% @instruments.each do |instrument| %>
-    <div class="card">
-      <% if instrument.image_url.present? %>
-        <img src="<%= instrument.image_url %>" alt="<%= instrument.name %>">
-      <% else %>
-        <div style="width:120px; height:90px; background:#eee; display:flex; align-items:center; justify-content:center; border-radius:6px; margin-bottom:10px;">
-          <span>Sem imagem</span>
+          <h2><%= instrument.name %></h2>
+          <p class="brand"><%= instrument.brand %></p>
+          <p><%= instrument.description %></p>
+          <p class="price">R$ <%= number_to_currency(instrument.price, unit: "", separator: ",", delimiter: ".") %></p>
         </div>
       <% end %>
+    </div>
+  </div>
 
-      <h2><%= instrument.name %></h2>
-      <p class="brand"><%= instrument.brand %></p>
-      <p><%= instrument.description %></p>
-      <p class="price">R$ <%= number_to_currency(instrument.price, unit: "", separator: ",", delimiter: ".") %></p>
+  <% if @instruments.empty? %>
+    <div class="empty-state">
+      <p>Nenhum instrumento encontrado.</p>
     </div>
   <% end %>
 </div>
-
-<% if @instruments.empty? %>
-  <p>Nenhum instrumento encontrado.</p>
-<% end %>
