@@ -1,4 +1,5 @@
-# Create sample users
+puts "Deleting users..."
+User.destroy_all
 puts "Creating users..."
 
 user1 = User.create!(
@@ -26,6 +27,10 @@ user4 = User.create!(
 )
 
 puts "Users created!"
+
+#apagar todos os instrumentos
+puts "Deleting instruments..."
+Instrument.destroy_all
 
 # Create sample instruments
 puts "Creating instruments..."
@@ -60,14 +65,14 @@ Instrument.create!([
     name: "Teclado Yamaha PSR-E373",
     category: "Órgãos e Teclados Eletrônicos",
     brand: "Yamaha",
-    price: 1400.00,
+    price: 1400,
     description: "Teclado portátil com 61 teclas sensíveis ao toque, mais de 600 vozes, funções de aprendizado e conectividade MIDI. Perfeito para iniciantes.",
     user: user1
   },
   {
     name: "Bateria Eletrônica Alesis Nitro Mesh",
     category: "Baterias e Percussão",
-    brand: "Alesis",
+    brand: "Boss",
     price: 2500,
     description: "Bateria eletrônica com pads de malha, módulo com 40 kits e 385 sons. Ideal para estudo silencioso e gravações.",
     user: user1
@@ -86,7 +91,7 @@ Instrument.create!([
   },
   {
     name: "Saxofone Alto Yamaha YAS-280",
-    category: "Sopro",
+    category: "Sopro - Metal",
     brand: "Yamaha",
     price: 2800,
     description: "Saxofone alto em Mib, ideal para estudantes avançados e músicos semi-profissionais. Construção em latão com acabamento laqueado dourado. Mecanismo preciso e sonoridade rica. Inclui case rígido, bocal 4C e palhetas.",
@@ -111,7 +116,7 @@ Instrument.create!([
   {
     name: "Violino Eagle VE441",
     category: "Cordas Friccionadas",
-    brand: "Eagle",
+    brand: "Kurzweil",
     price: 800,
     description: "Violino 4/4 intermediário com tampo em abeto e fundo/laterais em maple flamejado. Afinadores metálicos, cavalete em ebano e cordas D'Addario Prelude. Inclui estojo, arco de crina natural e breu. Ótimo custo-benefício.",
     user: user2
@@ -123,7 +128,7 @@ Instrument.create!([
   {
     name: "Violão Takamine GD11M",
     category: "Violões e Baixos",
-    brand: "Takamine",
+    brand: "Tonante",
     price: 1500,
     description: "Violão folk com tampo em mogno, projeção de som equilibrada e excelente tocabilidade.",
     user: user3
@@ -131,7 +136,7 @@ Instrument.create!([
   {
     name: "Bateria Mapex Tornado",
     category: "Baterias e Percussão",
-    brand: "Mapex",
+    brand: "Yamaha",
     price: 2500,
     description: "Kit de bateria com acabamento fosco, ideal para iniciantes e ensaios caseiros.",
     user: user3
@@ -199,7 +204,7 @@ Instrument.create!([
   {
     name: "Violoncelo Stradivari Student",
     category: "Cordas Friccionadas",
-    brand: "Stradivari",
+    brand: "Strinberg",
     price: 4000,
     description: "Violoncelo 4/4 para estudantes avançados, madeira maciça e acabamento artesanal.",
     user: user4
