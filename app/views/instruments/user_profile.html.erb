@@ -1,3 +1,4 @@
+<!-- app/views/instruments/user_profile.html.erb -->
 <div class="container mt-5">
   <h1>Perfil do Usuário</h1>
   <p>Bem-vindo, <%= @user.email %>!</p>
@@ -22,10 +23,10 @@
             <td><%= instrument.name %></td>
             <td><%= instrument.category %></td>
             <td><%= instrument.brand %></td>
-            <td>R$ <%= number_to_currency(instrument.price, unit: '', separator: ',', delimiter: '.') %></td>
+            <td><%= humanized_money_with_symbol(instrument.price) %></td>
             <td>
               <%= link_to 'Editar', edit_user_instrument_path(@user, instrument), class: 'btn btn-sm btn-warning' %>
-              <%= link_to 'Excluir', user_instrument_path(@user, instrument), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este instrumento?' }, class: 'btn btn-sm btn-danger' %>
+              <%= link_to 'Excluir', user_instrument_path(@user, instrument), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este instrumento?" }, class: 'btn btn-sm btn-danger' %>
             </td>
           </tr>
         <% end %>
@@ -34,6 +35,41 @@
   <% else %>
     <p>Você ainda não cadastrou nenhum instrumento.</p>
   <% end %>
+
+  <!--
+  <h2>Minhas Compras Efetuadas</h2>
+  <% paid_orders = @user.orders.where(state: 'paid') %>
+  <% if paid_orders.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Pedido</th>
+          <th>Instrumento</th>
+          <th>Preço</th>
+          <th>Estado</th>
+          <th>Data</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% paid_orders.each do |order| %>
+          <tr>
+            <td>#<%= order.id %></td>
+            <td><%= order.instrument.name %></td>
+            <td><%= humanized_money_with_symbol order.amount %></td>
+            <td><%= order.state %></td>
+            <td><%= order.created_at.to_date %></td>
+            <td>
+              <%= link_to 'Ver', order_path(order), class: 'btn btn-sm btn-info' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Você ainda não efetuou nenhuma compra.</p>
+  <% end %>
+  -->
 
   <%= link_to 'Voltar para Home', root_path, class: 'btn btn-secondary' %>
 </div>

@@ -48,8 +48,8 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100 shadow-sm border-0 instrument-card">
             <!-- Card Header with Category Badge -->
-            <div class="card-header bg-light border-0 pb-2">
-              <div class="d-flex justify-content-between align-items-center">
+            <div class="card-header bg-light border-0 pb-2 bg-transparent">
+              <div class="d-flex justify-content-between align-items-center flex-column">
                 <span class="badge bg-primary fs-6"><%= instrument.category %></span>
                 <small class="text-muted">
                   <i class="fas fa-user"></i>
@@ -91,7 +91,7 @@
                 <div class="d-flex gap-2">
                   <%= link_to "Ver Detalhes", instrument_path(instrument),
                       class: "btn btn-outline-primary btn-sm flex-fill" %>
-                  <% if instrument.user %>
+                  <% if instrument.user == current_user %>
                     <%= link_to "Editar", edit_instrument_path(instrument), class: "btn btn-outline-secondary btn-sm flex-fill" %>
 
                     <%= link_to "Excluir", instrument_path(instrument),
@@ -151,4 +151,3 @@
       </div>
     </div>
   <% end %>
-
