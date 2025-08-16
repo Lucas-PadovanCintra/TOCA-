@@ -41,6 +41,7 @@ class Instrument < ApplicationRecord
   ].freeze
 
   belongs_to :user
+  has_one :order
   validates :name, :category, :brand, :price, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   validates :brand, inclusion: { in: BRANDS }
