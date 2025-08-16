@@ -17,6 +17,9 @@
     <% if alert %>
       <p class="alert"><%= alert %></p>
     <% end %>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>
