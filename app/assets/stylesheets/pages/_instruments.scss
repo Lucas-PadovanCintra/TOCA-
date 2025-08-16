@@ -1,0 +1,42 @@
+.instruments-index {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .btn-group .btn {
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .display-4 {
+      font-size: 2rem;
+    }
+
+    .col-md-4, .col-md-3, .col-md-2 {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.instruments-show {
+  .container {
+    margin-top: 2rem;
+  }
+
+  .card {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    border-bottom: none;
+  }
+
+  .btn {
+    border-radius: 10px;
+  }
+
+  .badge {
+    border-radius: 10px;
+  }
+}
