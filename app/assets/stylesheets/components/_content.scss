@@ -1,0 +1,9 @@
+.content-wrapper {
+  margin-top: 80px; // Ajuste este valor com base na altura da sua navbar (teste 60px, 70px, etc.)
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    margin-top: 60px; // Ajuste para mobile, se necessário
+  }
+}

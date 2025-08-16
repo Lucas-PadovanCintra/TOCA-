@@ -71,7 +71,7 @@
                 <div class="card-body text-center py-4">
                   <h6 class="card-title mb-2 opacity-75">PREÇO</h6>
                   <h2 class="card-text mb-0 fw-bold">
-                    <i class="fas fa-tag me-2"></i><%= @instrument.formatted_price %>
+                    <i class="fas fa-tag me-2"></i><%= humanized_money_with_symbol(@instrument.price) %>
                   </h2>
                 </div>
               </div>
@@ -79,12 +79,12 @@
               <!-- Action Buttons -->
               <div class="d-grid gap-2">
                 <% if @instrument.user %>
-                  <%= link_to edit_user_instrument_path(@instrument.user, @instrument), 
+                  <%= link_to edit_user_instrument_path(@instrument.user, @instrument),
                       class: "btn btn-primary btn-lg" do %>
                     <i class="fas fa-edit"></i> Editar Instrumento
                   <% end %>
-                  
-                  <%= link_to user_instrument_path(@instrument.user, @instrument), 
+
+                  <%= link_to user_instrument_path(@instrument.user, @instrument),
                       method: :delete,
                       data: { confirm: "Tem certeza que deseja excluir este instrumento?" },
                       class: "btn btn-outline-danger" do %>
@@ -94,7 +94,7 @@
 
                 <%= form_with url: orders_path do %>
                   <%= hidden_field_tag 'instrument_id', @instrument.id %>
-                  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+                  <%= submit_tag 'Comprar', class: 'btn btn-primary' %>
                 <% end %>
               </div>
             </div>
@@ -130,7 +130,7 @@
       <h3 class="text-center mb-4 text-primary">
         <i class="fas fa-search"></i> Outros Instrumentos da Mesma Categoria
       </h3>
-      
+
       <div class="row">
         <% similar_instruments = Instrument.where(category: @instrument.category).where.not(id: @instrument.id).limit(3) %>
         <% if similar_instruments.any? %>
@@ -145,11 +145,11 @@
                     <strong>Marca:</strong> <%= instrument.brand %>
                   </p>
                   <p class="card-text text-success fw-bold">
-                    <i class="fas fa-tag me-1"></i><%= instrument.formatted_price %>
+                    <i class="fas fa-tag me-1"></i><%= humanized_money_with_symbol(instrument.price) %>
                   </p>
                 </div>
                 <div class="card-footer bg-transparent border-0">
-                  <%= link_to "Ver Detalhes", instrument_path(instrument), 
+                  <%= link_to "Ver Detalhes", instrument_path(instrument),
                       class: "btn btn-outline-primary btn-sm" %>
                 </div>
               </div>
@@ -172,20 +172,20 @@
   .bg-gradient-primary {
     background: linear-gradient(135deg, #007bff, #0056b3) !important;
   }
-  
+
   .card {
     border-radius: 15px;
     overflow: hidden;
   }
-  
+
   .card-header {
     border-bottom: none;
   }
-  
+
   .btn {
     border-radius: 10px;
   }
-  
+
   .badge {
     border-radius: 10px;
   }

@@ -1,12 +1,71 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #F5F5F5;
+  position: fixed; // Reforça a fixação (com fixed-top do Bootstrap)
+  top: 0;
+  width: 100%;
+  z-index: 1000; // Garante que fique acima de outros elementos
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Sombra sutil para destaque
+  transition: box-shadow 0.3s ease-in-out; // Transição suave ao rolar (inspirado no hover do index)
+
+  &:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); // Efeito hover como no card do index
+  }
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .navbar-brand {
+    font-weight: bold; // Negrito como no h1 do index
+    color: #007bff; // Azul primário das referências
+    font-size: 1.5rem; // Tamanho maior para destaque
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: #0056b3; // Gradiente mais escuro ao hover, inspirado no show
+    }
+
+    i {
+      color: #007bff; // Ícone no azul primário
+      font-size: 1.8rem; // Um pouco maior para logo
+    }
+  }
+
+  .nav-link {
+    &.btn-primary {
+      background: linear-gradient(135deg, #007bff, #0056b3); // Gradiente do show
+      border: none;
+      border-radius: 10px; // Arredondado como nos btns do show
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: translateY(-2px); // Efeito lift como no card do index
+      }
+    }
+
+    &.btn-secondary {
+      border-radius: 10px;
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+// Responsividade (inspirado no media query do index)
+@media (max-width: 768px) {
+  .navbar-lewagon {
+    padding: 0.5rem 1rem; // Ajuste para mobile
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+    .navbar-brand {
+      font-size: 1.2rem;
+
+      i {
+        font-size: 1.4rem;
+      }
+    }
+
+    .nav-link {
+      text-align: center; // Centraliza em mobile
+      margin-bottom: 0.5rem;
+    }
+  }
 }

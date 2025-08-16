@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_09_153430) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_14_200505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,13 +18,25 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_09_153430) do
     t.string "name"
     t.string "category"
     t.string "brand"
-    t.float "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
     t.boolean "availability", default: true
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_instruments_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "instrument_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.index ["instrument_id"], name: "index_orders_on_instrument_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +55,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_09_153430) do
   end
 
   add_foreign_key "instruments", "users"
+  add_foreign_key "orders", "instruments"
+  add_foreign_key "orders", "users"
 end

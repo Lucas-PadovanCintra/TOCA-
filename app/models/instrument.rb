@@ -41,10 +41,12 @@ class Instrument < ApplicationRecord
   ].freeze
 
   belongs_to :user
+  has_one :order
   validates :name, :category, :brand, :price, presence: true
   validates :category, inclusion: { in: CATEGORIES }
   validates :brand, inclusion: { in: BRANDS }
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  # validates :price, numericality: { greater_than_or_equal_to: 0 }
+  monetize :price_cents
 
   scope :by_category, ->(category) {
     where(category: category) if category.present?
@@ -70,7 +72,7 @@ class Instrument < ApplicationRecord
 
   end
 
-  def formatted_price
-    "R$ #{price.to_f.round(2).to_s.gsub('.', ',')}"
-  end
+  # def formatted_price
+  #   "R$ #{price.to_f.round(2).to_s.gsub('.', ',')}"
+  # end
 end

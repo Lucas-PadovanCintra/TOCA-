@@ -1,5 +1,21 @@
+#apagar todos os instrumentos
+puts "Deleting orders..."
+
+Order.destroy_all
+
+puts "Deleting instruments..."
+
+Instrument.destroy_all
+
 puts "Deleting users..."
+
 User.destroy_all
+
+# Create sample instruments
+puts "Deleting instruments..."
+
+Instrument.destroy_all
+
 puts "Creating users..."
 
 user1 = User.create!(
@@ -28,14 +44,10 @@ user4 = User.create!(
 
 puts "Users created!"
 
-#apagar todos os instrumentos
-puts "Deleting instruments..."
-Instrument.destroy_all
-
-# Create sample instruments
 puts "Creating instruments..."
 
 # Instrumentos do usuário 1
+
 Instrument.create!([
   {
     name: "Violão Yamaha FG830",
