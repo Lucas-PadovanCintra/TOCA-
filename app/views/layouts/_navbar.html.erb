@@ -19,7 +19,7 @@
             <%= link_to 'Meu Perfil', user_profile_path(current_user), class: 'nav-link btn btn-primary me-2' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link btn btn-secondary' %>
+            <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-link btn btn-secondary' %>
           </li>
         <% else %>
           <li class="nav-item">

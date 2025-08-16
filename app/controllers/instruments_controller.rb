@@ -42,7 +42,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument.destroy
-    redirect_to user_profile_path(@user), notice: 'Instrumento excluído com sucesso!'
+    redirect_to instruments_path, notice: 'Instrumento excluído com sucesso!'
   end
 
   private

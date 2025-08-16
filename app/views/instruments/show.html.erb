@@ -78,15 +78,14 @@
 
               <!-- Action Buttons -->
               <div class="d-grid gap-2">
-                <% if @instrument.user %>
+                <% if @instrument.user == current_user %>
                   <%= link_to edit_user_instrument_path(@instrument.user, @instrument),
                       class: "btn btn-primary btn-lg" do %>
                     <i class="fas fa-edit"></i> Editar Instrumento
                   <% end %>
 
                   <%= link_to user_instrument_path(@instrument.user, @instrument),
-                      method: :delete,
-                      data: { confirm: "Tem certeza que deseja excluir este instrumento?" },
+                      data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este instrumento?" },
                       class: "btn btn-outline-danger" do %>
                     <i class="fas fa-trash"></i> Excluir Instrumento
                   <% end %>

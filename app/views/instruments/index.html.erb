@@ -91,7 +91,7 @@
                 <div class="d-flex gap-2">
                   <%= link_to "Ver Detalhes", instrument_path(instrument),
                       class: "btn btn-outline-primary btn-sm flex-fill" %>
-                  <% if instrument.user %>
+                  <% if instrument.user == current_user %>
                     <%= link_to "Editar", edit_instrument_path(instrument), class: "btn btn-outline-secondary btn-sm flex-fill" %>
 
                     <%= link_to "Excluir", instrument_path(instrument),

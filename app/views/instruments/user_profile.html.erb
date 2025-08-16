@@ -25,7 +25,7 @@
             <td>R$ <%= number_to_currency(instrument.price, unit: '', separator: ',', delimiter: '.') %></td>
             <td>
               <%= link_to 'Editar', edit_user_instrument_path(@user, instrument), class: 'btn btn-sm btn-warning' %>
-              <%= link_to 'Excluir', user_instrument_path(@user, instrument), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este instrumento?' }, class: 'btn btn-sm btn-danger' %>
+              <%= link_to 'Excluir', user_instrument_path(@user, instrument), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir este instrumento?" }, class: 'btn btn-sm btn-danger' %>
             </td>
           </tr>
         <% end %>
